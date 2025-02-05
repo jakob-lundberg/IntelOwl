@@ -18,23 +18,17 @@ class ApiVoidAnalyzer(classes.ObservableAnalyzer):
         if self.observable_classification == self.ObservableTypes.DOMAIN.value:
             url = (
                 self.url
-                + f"""/domainbl/v1/pay-as-you-go/
-                ?key={self._api_key}
-                &host={self.observable_name}"""
+                + f"""/domainbl/v1/pay-as-you-go/?key={self._api_key}&host={self.observable_name}"""
             )
         elif self.observable_classification == self.ObservableTypes.IP.value:
             url = (
                 self.url
-                + f"""/iprep/v1/pay-as-you-go/
-                ?key={self._api_key}
-                &ip={self.observable_name}"""
+                + f"""/iprep/v1/pay-as-you-go/?key={self._api_key}&ip={self.observable_name}"""
             )
         elif self.observable_classification == self.ObservableTypes.URL.value:
             url = (
                 self.url
-                + f"""/urlrep/v1/pay-as-you-go/
-                ?key={self._api_key}
-                &url={self.observable_name}"""
+                + f"""/urlrep/v1/pay-as-you-go/?key={self._api_key}&url={self.observable_name}"""
             )
         r = requests.get(url)
         r.raise_for_status()
